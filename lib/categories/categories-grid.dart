@@ -4,7 +4,9 @@ import 'package:news_app/categories/category_item.dart';
 import 'package:news_app/models/category_model.dart';
 
 class categoriesGrid extends StatelessWidget {
-  const categoriesGrid({super.key});
+   categoriesGrid({required this.onCategorySelected});
+
+  void Function(CategoryModel) onCategorySelected;
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +32,14 @@ class categoriesGrid extends StatelessWidget {
               mainAxisSpacing: 24,
               crossAxisSpacing: 24,
               )
-              , itemBuilder: (_,index)=>CategoryItem(
-                category: categories[index],
-                index: index),
+              , itemBuilder: (_,index)=>GestureDetector(
+                onTap: (){
+                  onCategorySelected(categories[index]);
+                },
+                child: CategoryItem(
+                  category: categories[index],
+                  index: index),
+              ),
                 itemCount: categories.length,
             
               ),
