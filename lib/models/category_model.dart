@@ -6,11 +6,9 @@ class CategoryModel {
   String imageName;
   Color color;
 
-  CategoryModel({
-    required this.id,
-    required this.color,
-    required this.name,
-    required this.imageName
-  });
-
+  CategoryModel(
+      {required this.id,
+      required this.color,
+      required this.name,
+      required this.imageName});
 }

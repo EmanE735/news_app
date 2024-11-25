@@ -13,17 +13,14 @@ class NewsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-       debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       routes: {
-        HomeScreen.routeName : (_) => HomeScreen(),
-        
+        HomeScreen.routeName: (_) => HomeScreen(),
       },
       initialRoute: HomeScreen.routeName,
-          theme: AppTheme.lighttheme,
+      theme: AppTheme.lighttheme,
       //darkTheme:AppTheme.darktheme ,
       themeMode: ThemeMode.light,
-   
-        );
-  
+    );
   }
 }

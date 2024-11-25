@@ -4,48 +4,46 @@ import 'package:news_app/categories/category_item.dart';
 import 'package:news_app/models/category_model.dart';
 
 class categoriesGrid extends StatelessWidget {
-   categoriesGrid({required this.onCategorySelected});
+  categoriesGrid({required this.onCategorySelected});
 
   void Function(CategoryModel) onCategorySelected;
 
   @override
   Widget build(BuildContext context) {
-
-    final  categories =List.generate(6,(index)=>
-    CategoryModel(id: "$index", color: Colors.red, name: "Sports", imageName: "ball")
-    );
+    final categories = [
+      CategoryModel(id: 'business', color: Colors.red, name: 'Sports', imageName: 'sports'),
+      CategoryModel(id: 'business', color: Colors.red, name: 'Business', imageName: 'sports'),
+    ];
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          
-            Padding(padding: EdgeInsets.symmetric(vertical: 24),
-            child: Text("pick your category of interest",
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(color: AppTheme.navy,),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 24),
+            child: Text(
+              "pick your category of interest",
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: AppTheme.navy,
+                  ),
             ),
-            ),
-        
+          ),
           Expanded(
-            child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 24,
-              crossAxisSpacing: 24,
-              )
-              , itemBuilder: (_,index)=>GestureDetector(
-                onTap: (){
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 24,
+                crossAxisSpacing: 24,
+              ),
+              itemBuilder: (_, index) => GestureDetector(
+                onTap: () {
                   onCategorySelected(categories[index]);
                 },
-                child: CategoryItem(
-                  category: categories[index],
-                  index: index),
+                child: CategoryItem(category: categories[index], index: index),
               ),
-                itemCount: categories.length,
-            
-              ),
-              
+              itemCount: categories.length,
+            ),
           ),
-          
         ],
       ),
     );

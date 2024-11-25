@@ -16,41 +16,41 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String selectedItem ="categories";
-  CategoryModel? selectedCategory=null;
+  String selectedItem = "categories";
+  CategoryModel? selectedCategory = null;
   @override
-
-  
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: HomeDrawer(
         onItemSelected: onDrawerItemSelected,
       ),
       appBar: AppBar(
-        title: Text( selectedCategory != null ? selectedCategory!.name:
-        selectedItem=="categories" ?
-        "News App" : "settings"),
+        title: Text(selectedCategory != null
+            ? selectedCategory!.name
+            : selectedItem == "categories"
+                ? "News App"
+                : "settings"),
         foregroundColor: AppTheme.white,
       ),
-      body:selectedCategory!=null ? CategoriesDetails(categoryId: selectedCategory!.id):
-      selectedItem == "categories" ? categoriesGrid(onCategorySelected: onCategorySelected,) : SettingTab(),
+      body: selectedCategory != null
+          ? CategoriesDetails(categoryId: selectedCategory!.id)
+          : selectedItem == "categories"
+              ? categoriesGrid(
+                  onCategorySelected: onCategorySelected,
+                )
+              : SettingTab(),
     );
   }
 
   void onDrawerItemSelected(String item) {
-    selectedCategory=null;
-   selectedItem = item;
-      setState(() {
-        
-      });
-      Navigator.of(context).pop();
-    }
-    void onCategorySelected(CategoryModel category){
-      selectedCategory =category;
-      setState(() {
-        
-      });
-    }
-   
+    selectedCategory = null;
+    selectedItem = item;
+    setState(() {});
+    Navigator.of(context).pop();
   }
 
+  void onCategorySelected(CategoryModel category) {
+    selectedCategory = category;
+    setState(() {});
+  }
+}
